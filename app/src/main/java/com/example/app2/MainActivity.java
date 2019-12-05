@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -71,6 +72,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 deleteNV(ed_ID.getText().toString());
                 displayGirdView();
+            }
+        });
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int rounderPos = (Math.round(position/3)) * 3;
+                ed_ID.setText(parent.getItemAtPosition(rounderPos).toString());
             }
         });
     }
